@@ -1,10 +1,13 @@
 CC	= gcc
 CFLAGS	= -Wall -g -MD -O2 -I ../
 
-all: hello test timetest test_sandbox hugepages hugepages_mod.ko
+all: hello page test timetest test_sandbox hugepages hugepages_mod.ko
 
 hello: hello.o ../libdune/libdune.a
 	$(CC) $(CFLAGS) $(<) -o hello -L ../libdune -ldune -lpthread
+
+page: page.o ../libdune/libdune.a
+	$(CC) $(CFLAGS) $(<) -o page -L ../libdune -ldune -lpthread
 
 timetest: timetest.o ../libdune/libdune.a
 	$(CC) $(CFLAGS) $(<) -o $(@) -L ../libdune -ldune -lpthread
